@@ -5,12 +5,15 @@ import { COLORS, SPACING } from "../lib/theme";
 
 type MenuCardProps = {
   menu: Menu;
-  onPress?: () => void; // ML5 ใช้ตอนกดการ์ดไปหน้ารายละเอียด
+  onPress?: () => void;
 };
 
 export default function MenuCard({ menu, onPress }: MenuCardProps) {
   return (
-    <Pressable style={styles.card} onPress={onPress}>
+    <Pressable
+      style={({ pressed }) => [styles.card, { opacity: pressed ? 0.7 : 1 }]}
+      onPress={onPress}
+    >
       <View style={styles.emojiBox}>
         <Text style={styles.emoji}>{menu.emoji}</Text>
       </View>
@@ -28,26 +31,30 @@ export default function MenuCard({ menu, onPress }: MenuCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: "row", // ① วางลูกเรียงแนวนอน
-    alignItems: "center", // ② จัดกึ่งกลางแนวตั้ง
+    flexDirection: "row",
+    alignItems: "center",
     gap: SPACING.md,
     padding: SPACING.md,
     marginBottom: SPACING.sm,
-    borderRadius: 12,
+    borderRadius: 16,
     backgroundColor: COLORS.card,
-    borderWidth: 1,
-    borderColor: COLORS.border,
+    borderWidth: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 3,
   },
   emojiBox: {
     width: 48,
     height: 48,
-    borderRadius: 24, // ครึ่งหนึ่งของกว้าง = วงกลม
+    borderRadius: 24,
     backgroundColor: COLORS.bg,
     justifyContent: "center",
     alignItems: "center",
   },
   emoji: { fontSize: 24 },
-  info: { flex: 1 }, // ③ กินพื้นที่ที่เหลือทั้งหมด ดันราคาไปชิดขวา
+  info: { flex: 1 },
   name: { fontSize: 16, fontWeight: "bold", color: COLORS.text },
   meta: { fontSize: 13, color: COLORS.muted, marginTop: 2 },
   price: { fontSize: 18, fontWeight: "bold", color: COLORS.primary },

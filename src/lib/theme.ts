@@ -1,12 +1,16 @@
-// สี + ระยะห่างที่ใช้ทั้งแอป — แก้ที่นี่ที่เดียว เปลี่ยนทั้งแอป
 export const COLORS = {
-  primary: "#1E2761",
-  bg: "#F5F7FB",
+  primary: "#FF7E67",
+  bg: "#F9FAFB",
   card: "#FFFFFF",
-  text: "#1A1A2E",
-  muted: "#6B7280",
+  text: "#1F2937",
+  muted: "#9CA3AF",
   border: "#E5E7EB",
-  danger: "#DC2626",
+  danger: "#EF4444",
 };
 
-export const SPACING = { xs: 4, sm: 8, md: 16, lg: 24 };
+export const SPACING = {
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+};
